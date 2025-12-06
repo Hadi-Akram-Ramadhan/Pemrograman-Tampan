@@ -24,12 +24,14 @@ $returns = readData(RETURNS_FILE);
       <thead><tr><th>ID</th><th>Loan ID</th><th>Tgl Kembali</th><th>Denda</th></tr></thead>
       <tbody>
         <?php foreach ($returns as $r): ?>
+          <?php if (count($r) >= 4): ?>
           <tr>
-            <td><?=h($r[0])?></td>
-            <td><?=h($r[1])?></td>
-            <td><?=h($r[2])?></td>
-            <td><?=rp($r[3])?></td>
+            <td><?=h($r[0] ?? '')?></td>
+            <td><?=h($r[1] ?? '')?></td>
+            <td><?=h($r[2] ?? '')?></td>
+            <td><?=rp($r[3] ?? 0)?></td>
           </tr>
+          <?php endif; ?>
         <?php endforeach; ?>
       </tbody>
     </table>
